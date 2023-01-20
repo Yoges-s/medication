@@ -9,8 +9,37 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel='stylesheet' type='text/css' href='./assets/lib/css/example-smart-app.css'>
 </head>
 <body style="margin: 0;">
   <app-root></app-root>
-<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="scripts.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+  <script src='./assets/lib/js/example-smart-app.js'></script>
+  <script src='./assets/lib/js/fhir-client-v0.1.12.js'></script>
+  <script src='./assets/lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    extractData().then(
+      function(p) {
+        drawVisualization(p);
+      },
+      function() {
+        $('#loading').hide();
+        $('#errors').html('<p> Failed to call FHIR Service </p>');
+      }
+    );
+  </script>
+  <script type="text/javascript" src="runtime.js"></script>
+  <script type="text/javascript" src="polyfills.js"></script>
+  <script type="text/javascript" src="styles.js"></script>
+  <script type="text/javascript" src="scripts.js"></script>
+  <script type="text/javascript" src="vendor.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <div id='errors'>
+  </div>
+  <div id="loading" class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</body>
 </html>
